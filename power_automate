@@ -10,17 +10,7 @@ L'idée fondamentale :
 
 Exemple :
 
-```text
-Nouveau fichier SharePoint
-        ↓
-Power Automate déclenche le flow
-        ↓
-Lire le fichier
-        ↓
-Envoyer un email
-        ↓
-Enregistrer une notification
-```
+![Base de Power Automate](idée fondamentale.png)
 
 ---
 
@@ -70,15 +60,7 @@ Le flow s'exécute selon une **planification**.
 
 Exemple :
 
-```text
-Tous les jours à 08:00
-        ↓
-Flow
-        ↓
-Récupérer les données
-        ↓
-Générer un rapport
-```
+![Scheduled Cloud Flow](Scheduled Cloud Flow.png)
 
 Il utilise notamment le connecteur **Recurrence**.
 
@@ -221,15 +203,7 @@ Power Automate permet de créer de la logique conditionnelle.
 
 Exemple :
 
-```text
-Nouvelle demande
-       ↓
-Montant > 1000 € ?
-    ↙          ↘
-  Oui           Non
-   ↓             ↓
-Approval       Validation
-```
+![conditions](conditions.png)
 
 On peut utiliser :
 
@@ -246,17 +220,7 @@ Power Automate peut gérer des **processus d'approbation**.
 
 Exemple :
 
-```text
-Employé demande un congé
-        ↓
-Power Automate
-        ↓
-Manager reçoit une demande
-        ↓
-Approve / Reject
-        ↓
-Mise à jour du système
-```
+![Base de Power Automate](approvals.png)
 
 Les approbations sont un cas d'utilisation très classique de Power Automate.
 
@@ -354,15 +318,7 @@ Power Automate peut lire et modifier les données stockées dans **Microsoft Dat
 
 Exemple :
 
-```text
-Nouvelle ligne Dataverse
-        ↓
-Power Automate
-        ↓
-Créer une tâche
-        ↓
-Envoyer une notification Teams
-```
+![Power Automate + Dataverse](Power Automate + Dataverse.png)
 
 ---
 
@@ -465,27 +421,7 @@ L'objectif est d'empêcher qu'un utilisateur crée facilement un flux permettant
 
 ## 🎯 Le schéma à mémoriser
 
-```text
-              ┌──────────────┐
-              │   TRIGGER    │
-              └──────┬───────┘
-                     ↓
-              ┌──────────────┐
-              │    ACTION    │
-              └──────┬───────┘
-                     ↓
-              ┌──────────────┐
-              │  CONDITION   │
-              └──────┬───────┘
-                 ↙        ↘
-              TRUE        FALSE
-               ↓            ↓
-            Action        Action
-               ↘            ↙
-                └────┬─────┘
-                     ↓
-                   END
-```
+![Automate flow](power_automate_flow.png)
 
 **Phrase à retenir pour l'examen :**
 
