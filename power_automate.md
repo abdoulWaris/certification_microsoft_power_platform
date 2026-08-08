@@ -10,7 +10,7 @@ L'idée fondamentale :
 
 Exemple :
 
-![Base de Power Automate](idée fondamentale.png)
+![Base de Power Automate](idéefondamentale.png)
 
 ---
 
@@ -318,7 +318,7 @@ Power Automate peut lire et modifier les données stockées dans **Microsoft Dat
 
 Exemple :
 
-![Power Automate + Dataverse](Power Automate + Dataverse.png)
+![Power Automate + Dataverse](PowerAutomateDataverse.png)
 
 ---
 
