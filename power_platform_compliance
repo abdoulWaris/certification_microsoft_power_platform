@@ -1,0 +1,97 @@
+# Gouvernance et administration de Microsoft Power Platform
+
+## Introduction
+
+Achèvement : **100 XP**  
+Durée : **3 minutes**
+
+Gérer une plateforme low-code moderne à l’échelle de l’entreprise nécessite bien plus que la simple création d’applications et l’automatisation des flux de travail.
+
+Les organisations ont besoin de :
+
+- Contrôles structurés
+- Politiques de sécurité cohérentes
+- Visibilité sur l’utilisation de la plateforme
+- Protection des données sensibles
+- Processus fiables pour promouvoir les solutions du développement à la production
+
+**Microsoft Power Platform** offre un ensemble complet de capacités de gouvernance et d’administration permettant de répondre à ces exigences.
+
+### Scénario : Contoso
+
+Imaginez que vous travaillez dans l’administration informatique chez **Contoso**, une grande entreprise manufacturière qui a récemment étendu son utilisation de Power Platform à plusieurs départements.
+
+Des dizaines de créateurs développent :
+
+- Des applications canevas
+- Des flux Power Automate
+- Des agents Copilot Studio
+
+La direction souhaite avoir l’assurance que :
+
+- Les données sensibles sont protégées.
+- L’informatique conserve une visibilité sur les applications et solutions créées.
+- Le partage des ressources est contrôlé.
+- Les solutions de qualité peuvent être déployées en production de manière fiable.
+
+Ce module présente les outils et concepts permettant une adoption **gouvernée, sécurisée et évolutive** de Power Platform.
+
+---
+
+## Objectifs d’apprentissage
+
+À la fin de ce module, vous serez capable de :
+
+1. **Décrire les environnements Power Platform**
+   - Comprendre leur rôle dans l’organisation.
+   - Comprendre comment ils permettent de gérer les ressources.
+
+2. **Décrire le modèle de sécurité de Microsoft Power Platform**
+   - Comprendre les mécanismes permettant de protéger les ressources et les données.
+
+3. **Décrire la gestion de la confidentialité et de l’accessibilité des données**
+   - Comprendre comment Power Platform prend en charge les politiques de confidentialité.
+   - Comprendre les mécanismes de contrôle de l'accès aux données.
+
+4. **Décrire les capacités de surveillance et d’analyse**
+   - Surveiller l'utilisation de Power Platform.
+   - Analyser l'activité et identifier les problèmes potentiels.
+
+5. **Décrire la gestion du cycle de vie des applications**
+   - Comprendre le rôle de **Power Platform Pipelines**.
+   - Faciliter le passage des solutions entre les environnements de développement, de test et de production.
+
+---
+
+## Points clés à retenir
+
+> **Power Platform ne se limite pas au développement low-code.**  
+> Sa gouvernance repose sur plusieurs piliers : environnements, sécurité, confidentialité, surveillance et gestion du cycle de vie des applications.
+
+### Les principaux piliers
+
+| Domaine | Objectif |
+|---|---|
+| **Environnements** | Organiser et isoler les ressources |
+| **Sécurité** | Contrôler les accès et protéger les données |
+| **Confidentialité** | Encadrer l'utilisation et le partage des données |
+| **Surveillance** | Suivre l'activité et l'utilisation de la plateforme |
+| **ALM** | Gérer le cycle de vie des solutions |
+| **Power Platform Pipelines** | Automatiser et fiabiliser les déploiements |
+
+---
+
+## Résumé
+
+Pour une adoption de Power Platform à l'échelle de l'entreprise, il est essentiel de mettre en place une gouvernance adaptée.
+
+Les administrateurs doivent notamment pouvoir :
+
+- Organiser les ressources dans des environnements adaptés.
+- Sécuriser les données et les applications.
+- Contrôler l'accès et le partage.
+- Surveiller l'utilisation de la plateforme.
+- Respecter les exigences de confidentialité et d'accessibilité.
+- Déployer les solutions de manière contrôlée entre les différents environnements.
+
+**Objectif final :** permettre aux équipes de développer rapidement tout en maintenant un niveau élevé de **sécurité, de contrôle et de fiabilité**.
