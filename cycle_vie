@@ -1,0 +1,421 @@
+# Gestion du cycle de vie des applications avec Power Platform Pipelines
+
+## 1. Qu’est-ce que l’ALM ?
+
+**ALM (Application Lifecycle Management)** désigne la gestion de l’ensemble du cycle de vie d’une application :
+
+* Conception
+* Développement
+* Tests
+* Déploiement
+* Maintenance
+* Mise hors service
+
+Dans **Power Platform**, l’ALM permet de déplacer les solutions de manière **fiable, reproductible, contrôlée et auditable** entre les différents environnements.
+
+### Exemple : Contoso
+
+Chez Contoso, plusieurs équipes développent simultanément des solutions pour :
+
+* La fabrication
+* Les ressources humaines
+* La chaîne d’approvisionnement
+
+L’objectif est de disposer d’un processus standardisé permettant de passer du **développement → test → production**, sans dépendre de transferts manuels de fichiers.
+
+---
+
+# 2. Les solutions : fondement de l’ALM
+
+Une **solution** est un conteneur regroupant les composants nécessaires à une application Power Platform.
+
+Elle peut notamment contenir :
+
+* Tables
+* Applications
+* Flux Power Automate
+* Agents
+* Références de connexion
+* Variables d’environnement
+* Rôles de sécurité
+* Autres composants dépendants
+
+La solution constitue donc **l’unité déployable de Power Platform**.
+
+> **À retenir :** les solutions sont le fondement de l’ALM dans Power Platform.
+
+Il est recommandé de placer les composants dans une solution **dès le début du développement**, afin qu’ils puissent être suivis, versionnés et déployés ensemble.
+
+---
+
+# 3. Les environnements du cycle de vie
+
+Un processus ALM classique utilise trois environnements.
+
+| Environnement     | Rôle                                                   |
+| ----------------- | ------------------------------------------------------ |
+| **Développement** | Création et modification des solutions                 |
+| **Test**          | Validation et tests avant la production                |
+| **Production**    | Utilisation de la solution par les utilisateurs finaux |
+
+### Développement
+
+Les makers construisent et modifient les solutions.
+
+Les solutions y sont généralement **non gérées**, ce qui permet une modification complète des composants.
+
+### Test
+
+Les solutions sont testées par :
+
+* Les équipes QA
+* Les testeurs d’intégration
+* Les parties prenantes métier
+
+L’objectif est de vérifier que la solution fonctionne correctement avant son passage en production.
+
+### Production
+
+C’est l’environnement utilisé par les utilisateurs finaux.
+
+Les solutions déployées en production sont généralement **gérées (managed)** afin de limiter les modifications non autorisées.
+
+---
+
+# 4. Pourquoi utiliser Power Platform Pipelines ?
+
+Sans automatisation, le déploiement nécessite de nombreuses opérations manuelles :
+
+```text
+Développement
+     ↓
+Export manuel
+     ↓
+Import dans Test
+     ↓
+Validation
+     ↓
+Export manuel
+     ↓
+Import dans Production
+```
+
+Cette méthode est :
+
+* Longue
+* Sujet aux erreurs
+* Difficile à suivre
+* Difficile à auditer
+
+**Power Platform Pipelines** automatise et standardise ces déploiements.
+
+---
+
+# 5. Power Platform Pipelines
+
+Les **pipelines** sont une fonctionnalité ALM intégrée à Power Platform permettant d’automatiser le déploiement des solutions entre les environnements.
+
+Ils permettent de démocratiser l’ALM auprès de :
+
+* Makers
+* Administrateurs
+* Développeurs professionnels
+
+L’utilisation des pipelines ne nécessite donc pas nécessairement une expertise DevOps avancée.
+
+---
+
+# 6. Fonctionnement d’un pipeline
+
+Un administrateur configure :
+
+1. Un **environnement hôte**.
+2. Les environnements correspondant aux différentes étapes du déploiement.
+3. Le chemin de déploiement.
+
+Exemple :
+
+```text
+┌───────────────┐
+│ Développement │
+└───────┬───────┘
+        ↓
+┌───────────────┐
+│     Test      │
+└───────┬───────┘
+        ↓
+┌───────────────┐
+│  Production   │
+└───────────────┘
+```
+
+Une fois le pipeline configuré, le maker peut lancer le déploiement depuis son environnement de développement grâce à une **interface guidée**.
+
+---
+
+# 7. Étapes d’un déploiement
+
+## Étape 1 — Sélection du pipeline
+
+Le maker ouvre sa solution dans l’environnement de développement et sélectionne le pipeline approprié.
+
+## Étape 2 — Vérifications préalables
+
+Le pipeline effectue des contrôles avant le déploiement.
+
+Il peut notamment utiliser le **Solution Checker** afin de :
+
+* Identifier les violations des meilleures pratiques.
+* Vérifier que la solution peut être importée.
+* Détecter les problèmes susceptibles de bloquer le déploiement.
+
+## Étape 3 — Déploiement
+
+Si les vérifications réussissent, la solution est déployée vers l’environnement suivant.
+
+Si une approbation est nécessaire, le déploiement est mis en attente.
+
+## Étape 4 — Promotion
+
+Après validation dans l’environnement de test, la solution peut être promue vers l’étape suivante.
+
+## Étape 5 — Audit
+
+Les activités de déploiement sont enregistrées automatiquement dans l’hôte du pipeline.
+
+Cela permet de savoir :
+
+* **Qui** a effectué le déploiement.
+* **Quoi** a été déployé.
+* **Quand** le déploiement a eu lieu.
+
+---
+
+# 8. Avantages des pipelines
+
+| Public                          | Avantages                                                           |
+| ------------------------------- | ------------------------------------------------------------------- |
+| **Administrateurs**             | Configuration rapide et visibilité centralisée sur les déploiements |
+| **Makers**                      | Déploiement via une interface guidée, sans expertise DevOps avancée |
+| **Développeurs professionnels** | Possibilité d'étendre et d'automatiser les pipelines                |
+| **Équipes de conformité**       | Journaux d’audit permettant de suivre les déploiements              |
+
+### Résumé
+
+> **Power Platform Pipelines = automatisation + standardisation + contrôle + audit des déploiements.**
+
+---
+
+# 9. Déploiements délégués
+
+Les **déploiements délégués** permettent de déployer une solution dans un environnement sensible sans donner au maker un accès direct à cet environnement.
+
+Le déploiement peut utiliser l’identité :
+
+* D’un **principal de service**
+* Du **propriétaire de l’étape du pipeline**
+
+Cela permet d'appliquer le principe du **moindre privilège**.
+
+### Exemple
+
+```text
+Maker
+  │
+  │ Demande de déploiement
+  ↓
+Pipeline
+  │
+  │ Identité autorisée
+  ↓
+Environnement sensible
+```
+
+Le maker peut donc demander un déploiement sans disposer lui-même des droits nécessaires sur l’environnement cible.
+
+---
+
+# 10. Portes d’approbation
+
+Une **porte d’approbation** peut être ajoutée à une étape de déploiement.
+
+Dans ce cas :
+
+```text
+Déploiement demandé
+        ↓
+   Approbation
+        ↓
+   ┌────┴────┐
+   │         │
+Approuvé   Refusé
+   │
+   ↓
+Déploiement
+```
+
+Le déploiement est suspendu jusqu'à ce qu'un approbateur désigné l'approuve.
+
+### Pourquoi utiliser une approbation ?
+
+Elle permet notamment de :
+
+* Contrôler les déploiements en production.
+* Faire intervenir les équipes QA.
+* Vérifier les critères d’acceptation.
+* Conserver une trace de l’approbation dans le journal d’audit.
+
+---
+
+# 11. Intégration avec les outils DevOps
+
+Les organisations disposant déjà de pratiques CI/CD peuvent intégrer Power Platform à leurs processus DevOps.
+
+Deux outils importants sont :
+
+* **Power Platform Build Tools for Azure DevOps**
+* **GitHub Actions for Power Platform**
+
+Ils permettent d’intégrer les solutions Power Platform dans des pipelines CI/CD plus larges.
+
+---
+
+# 12. Bonnes pratiques ALM
+
+## Développer dans un environnement dédié
+
+❌ Ne pas développer directement en production.
+
+✅ Utiliser un environnement de développement dédié.
+
+---
+
+## Inclure les dépendances
+
+Inclure dans la solution tous les composants nécessaires :
+
+* Tables
+* Références de connexion
+* Variables d’environnement
+* Rôles de sécurité
+* Autres dépendances
+
+---
+
+## Utiliser les variables d’environnement
+
+Les **variables d’environnement** permettent de stocker les valeurs qui diffèrent selon l’environnement.
+
+Exemple :
+
+```text
+Développement → API_DEV
+Test          → API_TEST
+Production    → API_PROD
+```
+
+La même solution peut ainsi être déployée dans plusieurs environnements sans modifier manuellement sa configuration.
+
+---
+
+## Utiliser les solutions gérées
+
+Dans les environnements de test et de production, privilégier les **solutions gérées** afin de réduire les modifications non autorisées.
+
+---
+
+## Utiliser le Solution Checker
+
+Exécuter régulièrement le **Solution Checker** pendant le développement afin d’identifier les problèmes avant le déploiement.
+
+---
+
+# 13. Schéma global à retenir
+
+```text
+                 ALM Power Platform
+                        │
+                        ▼
+                  ┌───────────┐
+                  │ Solution  │
+                  └─────┬─────┘
+                        │
+                        ▼
+                ┌───────────────┐
+                │ Développement │
+                └───────┬───────┘
+                        │
+                  Pipeline
+                        │
+                        ▼
+                ┌───────────────┐
+                │      Test     │
+                └───────┬───────┘
+                        │
+                  Approbation
+                        │
+                        ▼
+                ┌───────────────┐
+                │  Production   │
+                └───────────────┘
+                        │
+                        ▼
+                   Audit / Logs
+```
+
+---
+
+# 14. À retenir pour l’examen
+
+### ALM
+
+**ALM = gestion du cycle de vie complet d’une application.**
+
+### Solution
+
+**La solution est l’unité fondamentale et déployable de l’ALM Power Platform.**
+
+### Environnements
+
+```text
+Développement → Test → Production
+```
+
+### Power Platform Pipelines
+
+Automatise et standardise le déplacement des solutions entre les environnements.
+
+### Solution Checker
+
+Permet d’identifier les problèmes et violations des meilleures pratiques avant le déploiement.
+
+### Déploiement délégué
+
+Permet de déployer avec une identité autorisée sans donner au maker un accès direct à l’environnement cible.
+
+### Porte d’approbation
+
+Bloque le déploiement jusqu’à l’approbation explicite d’un approbateur.
+
+### Variables d’environnement
+
+Permettent d'utiliser une même solution dans plusieurs environnements avec des configurations différentes.
+
+### Solutions gérées
+
+À privilégier dans les environnements de **test et de production**.
+
+### DevOps
+
+Power Platform peut être intégré à des processus CI/CD grâce notamment à :
+
+* **Azure DevOps**
+* **GitHub Actions**
+
+---
+
+## Résumé express
+
+> **Solution → Développement → Pipeline → Test → Approbation → Production → Audit**
+
+C’est le schéma essentiel à retenir pour comprendre la gestion du cycle de vie des applications avec **Power Platform Pipelines**.
